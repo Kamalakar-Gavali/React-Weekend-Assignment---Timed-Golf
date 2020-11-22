@@ -37,6 +37,7 @@ class Timer extends React.Component {
     setMoveBall=()=>
     {
       console.log("Added keyDown Listner"); 
+      this.setState({x:0,y:0,time:0});
       this. timeInterval=setInterval(()=>{this.setState({time:this.state.time+1})},1*1000)
       document.addEventListener('keydown',this.addKeyDownListner);    
     }
@@ -44,11 +45,12 @@ class Timer extends React.Component {
 
   componentDidUpdate()
   {
+    console.log(this.state.x+" "+this.state.y);
     if(this.state.x===250 && this.state.y===250)    
     {
       clearInterval(this.timeInterval);
       document.removeEventListener('keydown',this.addKeyDownListner);
-      this.setState({x:0,y:0,time:0});
+      // this.setState({x:0,y:0,time:0});
     }
   }
 
